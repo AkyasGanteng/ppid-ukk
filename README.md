@@ -96,30 +96,30 @@ php artisan db:seed --class=AdminUserSeeder
 
 
 
-exit
+
 ```
 
 **Default Login**: 
 - Email: `admin1@ppidgarut.com`
 - Password: `admin123`
-
+```
 ## 📁 Struktur Folder Penting
 
-```
+```text
 ppid-main/
 ├── app/
-│   ├── Http/Controllers/    # Kontroller aplikasi
-│   └── Models/              # Model database (Berita, Galeri, etc)
+│   ├── Http/Controllers/     # Controller aplikasi
+│   └── Models/               # Model database (Berita, Galeri, dll)
 ├── database/
-│   ├── migrations/          # File migrasi database
-│   └── seeders/             # File seeder data
+│   ├── migrations/           # File migrasi database
+│   └── seeders/              # File seeder data
 ├── resources/
-│   ── views/               # Blade template (UI),Style
+│   └── views/                # Blade template (UI & Style)
 ├── routes/
-│   └── web.php              # Route web aplikasi
+│   └── web.php               # Route web aplikasi
 └── storage/
-    └── app/public/          # File upload (foto galeri, dokumen)
-```
+    └── app/public/           # File upload (foto galeri, dokumen)
+
 
 ## 🔑 Akses Fitur Berdasarkan Role
 
