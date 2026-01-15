@@ -284,13 +284,12 @@ END
 #### Use Case Admin:
 ```
 ┌────────────────────────────────────────────────┐
-│     ADMIN PPID (All User Permissions +)       │
+│     ADMIN PPID (All User Permissions +)        │
 ├────────────────────────────────────────────────┤
 │ ✓ Semua akses Pengunjung (lihat konten)       │
 │ ✓ Buat Berita/Artikel Baru                    │
 │ ✓ Edit Berita yang Sudah Ada                  │
-│ ✓ Hapus Berita                                │
-│ ✓ Kelola Komentar (Hapus/Moderate)            │
+│ ✓ Hapus Berita                                │         
 │ ✓ Buat Galeri Baru                            │
 │ ✓ Edit Galeri                                 │
 │ ✓ Hapus Galeri & Foto                         │
@@ -298,10 +297,6 @@ END
 │ ✓ Edit/Hapus Dasar Hukum                      │
 │ ✓ Upload SOP PPID (PDF)                       │
 │ ✓ Edit/Hapus SOP PPID                         │
-│ ✓ Lihat Daftar User                           │
-│ ✓ Ubah Role User (Admin/User)                 │
-│ ✓ Hapus User                                  │
-│ ✓ Lihat Dashboard & Statistik                 │
 └────────────────────────────────────────────────┘
 ```
 
@@ -367,7 +362,7 @@ END
 ```
 START
   ↓
-[Pilih Menu "Kelola Galeri"]
+[Pilih Menu " Galeri"]
   ↓
 [Lihat Daftar Galeri]
   ↓
@@ -393,35 +388,7 @@ Pilih Aksi:
 END
 ```
 
-#### Alur Admin - Kelola User:
-```
-START
-  ↓
-[Pilih Menu "Kelola User"]
-  ↓
-[Lihat Daftar User dengan Role]
-  ↓
-Pilih Aksi:
-  │
-  ├─→ [UBAH ROLE USER]
-  │     ↓
-  │   [Pilih User dari Daftar]
-  │     ↓
-  │   [Pilih Role: "Admin" atau "User"]
-  │     ↓
-  │   [Klik Ubah]
-  │     ↓
-  │   [Update Database] ✓
-  │
-  └─→ [HAPUS USER]
-        ↓
-      [Pilih User]
-        ↓
-      [Konfirmasi Penghapusan]
-        ↓
-      [Hapus User + Destroy Session] ✓
-END
-```
+
 
 ---
 
@@ -504,7 +471,6 @@ END
 | Hapus Berita | ✗ | ✗ | ✓ |
 | Beri Komentar | ✗ | ✓ | ✓ |
 | Kelola Galeri | ✗ | ✗ | ✓ |
-| Kelola User | ✗ | ✗ | ✓ |
 | Download Dokumen | ✓ | ✓ | ✓ |
 
 ---
