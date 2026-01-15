@@ -166,3 +166,425 @@ Untuk berkontribusi:
 ### Diagram Sistem
 <img width="4096" height="221" alt="uml2" src="https://github.com/user-attachments/assets/dba6f2a2-4720-4757-9ffe-3cfd768ac6a0" />
 
+# PPID Main — Aplikasi Website PPID
+
+## Deskripsi Singkat
+Aplikasi website pengelolaan PPID (Pejabat Pengelola Informasi dan Dokumentasi) dengan fitur galeri, manajemen konten, dan hak akses berbasis role (admin vs publik).
+
+## Fitur Utama
+- 📰 CRUD Berita/Artikel dengan gambar
+- 💬 Sistem Komentar pada berita
+- 🖼️ Manajemen Galeri Foto kegiatan
+- 📋 Penyimpanan Dasar Hukum (regulasi)
+- 📑 Penyimpanan SOP PPID
+- 👥 Manajemen User dengan role-based access
+- 🔐 Autentikasi login & reset password
+- 📱 Tampilan responsif (Mobile-friendly)
+
+## Tech Stack
+- **Framework:** Laravel 10.x
+- **Database:** MySQL
+- **Frontend:** Blade Template Engine + Bootstrap 5
+- **Server:** Apache (XAMPP)
+- **Language:** PHP 8.x
+
+---
+
+## 📊 Use Case & Alur Sistem
+
+### 1️⃣ Alur Pengunjung (User/Guest)
+
+#### Use Case Pengunjung:
+```
+┌─────────────────────────────────────────┐
+│     PENGUNJUNG WEBSITE PPID            │
+├─────────────────────────────────────────┤
+│ ✓ Lihat Halaman Beranda                │
+│ ✓ Membaca Daftar Berita/Artikel        │
+│ ✓ Membaca Detail Berita Lengkap        │
+│ ✓ Memberikan Komentar (jika login)     │
+│ ✓ Lihat Daftar Galeri Foto             │
+│ ✓ Lihat Dokumentasi Dasar Hukum        │
+│ ✓ Download File Dasar Hukum (PDF)      │
+│ ✓ Lihat Dokumentasi SOP PPID           │
+│ ✓ Download File SOP PPID (PDF)         │
+│ ✓ Login dengan Email & Password        │
+│ ✓ Reset Password (Lupa Password)       │
+└─────────────────────────────────────────┘
+```
+
+#### Alur Pengunjung Browsing Konten:
+```
+START
+  ↓
+[Buka Website PPID]
+  ↓
+[Lihat Halaman Beranda]
+  ↓
+  ├─→ [Menu BERITA]
+  │     ↓
+  │   [Lihat Daftar Berita]
+  │     ↓
+  │   [Pilih & Baca Berita]
+  │     ↓
+  │   [Lihat Komentar]
+  │     ├─→ Ingin Komentar? 
+  │     │     ├─ YA  → [Login] → [Tulis Komentar] → [Submit] → DB
+  │     │     └─ TIDAK → [Lanjut]
+  │     ↓
+  │   [Kembali ke Daftar]
+  │
+  ├─→ [Menu GALERI]
+  │     ↓
+  │   [Lihat Daftar Galeri Foto]
+  │     ↓
+  │   [Klik Foto untuk Detail]
+  │     ↓
+  │   [Lihat Informasi Kegiatan & Tanggal]
+  │
+  ├─→ [Menu DOKUMEN]
+  │     ├─→ [Dasar Hukum]
+  │     │     ↓
+  │     │   [Lihat Daftar Undang-Undang]
+  │     │     ↓
+  │     │   [Download File PDF]
+  │     │
+  │     └─→ [SOP PPID]
+  │           ↓
+  │         [Lihat Daftar SOP]
+  │           ↓
+  │         [Download File PDF]
+  │
+  └─→ [Logout / Tutup]
+END
+```
+
+#### Alur Login Pengunjung:
+```
+START
+  ↓
+[Klik Tombol Login]
+  ↓
+[Masukkan Email & Password]
+  ↓
+[Submit Form]
+  ↓
+[Sistem Verifikasi Kredensial ke Database]
+  ↓
+Login Berhasil? 
+  ├─ YA  → [Generate Session Token] → [Redirect ke Dashboard] ✓
+  └─ TIDAK → [Tampilkan Error Message] → [Kembali ke Form Login]
+END
+```
+
+---
+
+### 2️⃣ Alur Admin (Administrator PPID)
+
+#### Use Case Admin:
+```
+┌────────────────────────────────────────────────┐
+│     ADMIN PPID (All User Permissions +)       │
+├────────────────────────────────────────────────┤
+│ ✓ Semua akses Pengunjung (lihat konten)       │
+│ ✓ Buat Berita/Artikel Baru                    │
+│ ✓ Edit Berita yang Sudah Ada                  │
+│ ✓ Hapus Berita                                │
+│ ✓ Kelola Komentar (Hapus/Moderate)            │
+│ ✓ Buat Galeri Baru                            │
+│ ✓ Edit Galeri                                 │
+│ ✓ Hapus Galeri & Foto                         │
+│ ✓ Upload Dasar Hukum (PDF)                    │
+│ ✓ Edit/Hapus Dasar Hukum                      │
+│ ✓ Upload SOP PPID (PDF)                       │
+│ ✓ Edit/Hapus SOP PPID                         │
+│ ✓ Lihat Daftar User                           │
+│ ✓ Ubah Role User (Admin/User)                 │
+│ ✓ Hapus User                                  │
+│ ✓ Lihat Dashboard & Statistik                 │
+└────────────────────────────────────────────────┘
+```
+
+#### Alur Admin - Kelola Berita:
+```
+START
+  ↓
+[Admin Login]
+  ↓
+[Akses Dashboard Admin]
+  ↓
+[Pilih Menu "Kelola Berita"]
+  ↓
+[Lihat Daftar Berita]
+  ↓
+Pilih Aksi:
+  │
+  ├─→ [BUAT BERITA BARU]
+  │     ↓
+  │   [Klik Tombol "+ Tambah Berita"]
+  │     ↓
+  │   [Buka Form Berita]
+  │     ↓
+  │   [Isi: Judul, Isi/Teks, Penulis, Tanggal]
+  │     ↓
+  │   [Upload Gambar Berita]
+  │     ↓
+  │   [Klik Submit]
+  │     ↓
+  │   [Validasi Form (Server-side)]
+  │     ├─ VALID → [Simpan ke Database] → [Tampilkan Success] ✓
+  │     └─ ERROR → [Tampilkan Error Message] → [Kembali ke Form]
+  │
+  ├─→ [EDIT BERITA]
+  │     ↓
+  │   [Pilih Berita dari Daftar]
+  │     ↓
+  │   [Klik Tombol "Edit"]
+  │     ↓
+  │   [Buka Form Edit (Pre-filled Data)]
+  │     ↓
+  │   [Ubah Data yang Diperlukan]
+  │     ↓
+  │   [Update Gambar (Opsional)]
+  │     ↓
+  │   [Klik Submit]
+  │     ↓
+  │   [Update Database] → [Hapus Gambar Lama] → [Success] ✓
+  │
+  └─→ [HAPUS BERITA]
+        ↓
+      [Pilih Berita]
+        ↓
+      [Klik Tombol "Hapus"]
+        ↓
+      [Konfirmasi: "Yakin ingin hapus?"]
+        ├─ YA  → [Hapus dari Database] → [Hapus File Gambar] → [Success] ✓
+        └─ TIDAK → [Batal]
+END
+```
+
+#### Alur Admin - Kelola Galeri:
+```
+START
+  ↓
+[Pilih Menu "Kelola Galeri"]
+  ↓
+[Lihat Daftar Galeri]
+  ↓
+Pilih Aksi:
+  │
+  ├─→ [BUAT GALERI]
+  │     ↓
+  │   [Form: Judul, Kegiatan, Tanggal, Foto]
+  │     ↓
+  │   [Upload Foto]
+  │     ↓
+  │   [Simpan ke Database & Storage]
+  │
+  ├─→ [EDIT GALERI]
+  │     ↓
+  │   [Ubah Data & Foto]
+  │     ↓
+  │   [Update Database]
+  │
+  └─→ [HAPUS GALERI]
+        ↓
+      [Hapus dari Database & Storage]
+END
+```
+
+#### Alur Admin - Kelola User:
+```
+START
+  ↓
+[Pilih Menu "Kelola User"]
+  ↓
+[Lihat Daftar User dengan Role]
+  ↓
+Pilih Aksi:
+  │
+  ├─→ [UBAH ROLE USER]
+  │     ↓
+  │   [Pilih User dari Daftar]
+  │     ↓
+  │   [Pilih Role: "Admin" atau "User"]
+  │     ↓
+  │   [Klik Ubah]
+  │     ↓
+  │   [Update Database] ✓
+  │
+  └─→ [HAPUS USER]
+        ↓
+      [Pilih User]
+        ↓
+      [Konfirmasi Penghapusan]
+        ↓
+      [Hapus User + Destroy Session] ✓
+END
+```
+
+---
+
+## 🗄️ Database Schema
+
+```
+┌──────────────┐
+│    users     │
+├──────────────┤
+│ id (PK)      │
+│ name         │
+│ email        │
+│ password     │
+│ role         │ ← admin / user
+│ created_at   │
+│ updated_at   │
+└──────────────┘
+       ↑
+       │ (1 admin has many)
+       │
+   ┌───┴─────────────────┬─────────────────┐
+   │                     │                 │
+┌──┴──────┐      ┌───────┴───┐      ┌─────┴─────┐
+│ beritas  │      │ comments  │      │ sessions  │
+├──────────┤      ├───────────┤      ├───────────┤
+│ id (PK)  │      │ id (PK)   │      │ id (PK)   │
+│ judul    │      │ berita_id │      │ user_id   │
+│ foto     │      │ user_id   │      │ payload   │
+│ teks     │      │ content   │      │ ip_addr   │
+│ penulis  │      │ created_at│      │ last_act  │
+│ tanggal  │      │ updated_at│      └───────────┘
+│ created  │      └───────────┘
+│ updated  │
+└──────────┘
+     ↑
+     └─→ Relationships FK
+
+┌──────────────┐
+│   galeris    │
+├──────────────┤
+│ id (PK)      │
+│ judul        │
+│ kegiatan     │
+│ tanggal      │
+│ foto         │
+│ created_at   │
+│ updated_at   │
+└──────────────┘
+
+┌────────────────────┐
+│  dasar_hukums      │
+├────────────────────┤
+│ id (PK)            │
+│ title              │
+│ file (PDF)         │
+│ created_at         │
+│ updated_at         │
+└────────────────────┘
+
+┌────────────────────┐
+│    sop_ppids       │
+├────────────────────┤
+│ id (PK)            │
+│ title              │
+│ file (PDF)         │
+│ created_at         │
+│ updated_at         │
+└────────────────────┘
+```
+
+---
+
+## 🔐 Kontrol Akses (Role-Based Access Control)
+
+| Fitur | Guest | User | Admin |
+|-------|-------|------|-------|
+| Lihat Berita | ✓ | ✓ | ✓ |
+| Buat Berita | ✗ | ✗ | ✓ |
+| Edit Berita | ✗ | ✗ | ✓ |
+| Hapus Berita | ✗ | ✗ | ✓ |
+| Beri Komentar | ✗ | ✓ | ✓ |
+| Kelola Galeri | ✗ | ✗ | ✓ |
+| Kelola User | ✗ | ✗ | ✓ |
+| Download Dokumen | ✓ | ✓ | ✓ |
+
+---
+
+## 🚀 Instalasi (Windows - XAMPP)
+
+1. **Konfigurasi Awal**
+   ```bash
+   cd c:\xampp\htdocs\ppid-main
+   composer install
+   copy .env.example .env
+   ```
+
+2. **Setup Database**
+   - Edit `.env` → set `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`
+   ```bash
+   php artisan key:generate
+   php artisan migrate
+   ```
+
+3. **Jalankan Aplikasi**
+   ```bash
+   php artisan storage:link
+   php artisan serve
+   ```
+   Akses: `http://localhost:8000`
+
+---
+
+## 👤 Membuat Akun Admin
+
+```bash
+php artisan tinker
+\App\Models\User::create([
+    'name' => 'Admin PPID',
+    'email' => 'admin@ppid.com',
+    'password' => bcrypt('password123'),
+    'role' => 'admin'
+]);
+exit
+```
+
+---
+
+## 📁 Struktur Project
+
+```
+ppid-main/
+├── app/
+│   ├── Models/
+│   │   ├── User.php
+│   │   ├── Berita.php
+│   │   ├── Comment.php
+│   │   └── ...
+│   └── Http/Controllers/
+├── resources/views/
+│   ├── layouts/
+│   ├── berita/
+│   ├── galeri/
+│   ├── auth/
+│   └── ...
+├── routes/
+│   └── web.php
+├── database/
+│   └── migrations/
+├── public/
+│   └── storage/ → uploads
+└── storage/
+    └── app/public/
+```
+
+---
+
+## 🎯 Fitur Lanjutan
+
+- **Email Verification** → Verifikasi email saat registrasi
+- **Password Reset** → Forgot password dengan link email
+- **File Upload** → Gambar & PDF ke storage publik
+- **Responsive Design** → Mobile, tablet, desktop
+- **Session Management** → Auto-logout & remember-me
+
+---
+
