@@ -121,7 +121,7 @@ ppid-main/
     └── app/public/           # File upload (foto galeri, dokumen)
 
 
-## 🔑 Akses Fitur Berdasarkan Role
+## Akses Fitur Berdasarkan Role
 
 | Fitur | Admin | User |
 |-------|-------|------|
@@ -161,3 +161,8 @@ Untuk berkontribusi:
 ## Entity Relationship Diagram (ERD)
 
 <img width="1366" height="768" alt="Screenshot (7)" src="https://github.com/user-attachments/assets/8d648545-832d-4650-97c2-90735511f1f4" />
+
+## Use Cases dan Alur Sistem
+### Diagram Sistem
+<img width="4096" height="221" alt="uml2" src="https://github.com/user-attachments/assets/dba6f2a2-4720-4757-9ffe-3cfd768ac6a0" />
+
