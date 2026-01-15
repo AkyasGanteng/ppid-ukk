@@ -274,80 +274,39 @@
 <section class="highlight-section">
     <div class="container">
         <div class="row g-4 justify-content-center">
+           <div class="col-md-4 col-sm-6 pop-out">
+    <a href="{{ route('sop-ppid.index') }}" class="text-decoration-none text-dark">
+        <div class="highlight-box">
+            <h5>SOP PPID</h5>
+            <p>Standar Operasional Prosedur Pejabat Pengelola Informasi dan Dokumentasi.</p>
+        </div>
+    </a>
+</div>
             <div class="col-md-4 col-sm-6 pop-out">
-                <div class="highlight-box">
-                    <h5>Informasi Berkala</h5>
-                    <p>Dapatkan Informasi Mengenai Pemerintah Kabupaten Garut.</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 pop-out">
-                <div class="highlight-box">
-                    <h5>Informasi Setiap Saat</h5>
-                    <p>Lakukan permohonan informasi secara cepat dan mudah.</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 pop-out">
-                <div class="highlight-box">
-                    <h5>Informasi Serta Merta</h5>
-                    <p>Komitmen PPID Kabupaten Garut untuk transparansi.</p>
-                </div>
-            </div>
+    <a href="{{ route('maklumat-layanan') }}" class="text-decoration-none text-dark">
+        <div class="highlight-box">
+            <h5>Maklumat Layanan</h5>
+            <p>Pernyataan komitmen pelayanan informasi publik PPID.</p>
+        </div>
+    </a>
+</div>
+           <div class="col-md-4 col-sm-6 pop-out">
+    <a href="{{ route('dasar-hukum.index') }}" class="text-decoration-none text-dark">
+        <div class="highlight-box">
+            <h5>Dasar Hukum</h5>
+            <p>Landasan peraturan perundang-undangan terkait layanan informasi publik.</p>
+        </div>
+    </a>
+</div>
+
         </div>
     </div>
 </section>
 
-<!-- SECTION: INFORMASI PUBLIK -->
-<section class="py-5 text-white text-center position-relative overflow-hidden" 
-    style="background: linear-gradient(to right, #2e7bcf, #155fa0);">
-    <div class="container">
-        <h2 class="display-5 fw-bold pop-out">INFORMASI PUBLIK</h2>
-        <p class="lead mt-3 pop-out">Informasi Publik adalah informasi yang dihasilkan, disimpan, dikelola, 
-            dikirim, dan/atau diterima oleh suatu badan publik yang berkaitan dengan penyelenggara 
-            negara serta informasi lain yang sesuai dengan Undang-Undang ini dan berkaitan dengan 
-            kepentingan publik.</p>
 
-        <!-- Cards: Dua atas -->
-        <div class="row justify-content-center mt-5 g-4">
-            <div class="col-md-5 pop-out">
-                <div class="card card-hover shadow-sm border-0 rounded-3 overflow-hidden">
-                    <img src="{{ asset('assets/stasiun.png') }}" class="card-img" alt="Stasiun">
-                    <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
-                        <img src="{{ asset('assets/Garut.png') }}" alt="Garut" style="width: 120px;">
-                        <h5 class="mt-3 text-primary fw-bold bg-white px-4 py-2 rounded shadow">
-                            INFORMASI BERKALA
-                        </h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5 pop-out">
-                <div class="card card-hover shadow-sm border-0 rounded-3 overflow-hidden">
-                    <img src="{{ asset('assets/stasiun.png') }}" class="card-img" alt="Stasiun">
-                    <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
-                        <img src="{{ asset('assets/Garut.png') }}" alt="Garut" style="width: 120px;">
-                        <h5 class="mt-3 text-primary fw-bold bg-white px-4 py-2 rounded shadow">
-                            INFORMASI SERTA MERTA
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Card: Satu bawah -->
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-5 pop-out">
-                <div class="card card-hover shadow-sm border-0 rounded-3 overflow-hidden">
-                    <img src="{{ asset('assets/stasiun.png') }}" class="card-img" alt="Stasiun">
-                    <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
-                        <img src="{{ asset('assets/Garut.png') }}" alt="Garut" style="width: 120px;">
-                        <h5 class="mt-3 text-primary fw-bold bg-white px-4 py-2 rounded shadow">
-                            INFORMASI SETIAP SAAT
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+     
+        
 
 
 

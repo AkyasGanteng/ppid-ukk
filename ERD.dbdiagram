@@ -1,0 +1,77 @@
+Table users {
+  id integer [primary key]
+  name varchar
+  email varchar [unique, note: 'Email pengguna untuk login']
+  email_verified_at timestamp [nullable]
+  password varchar
+  role varchar [default: 'user', note: 'admin atau user']
+  remember_token varchar [nullable]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table beritas {
+  id integer [primary key]
+  judul varchar [note: 'Judul berita/artikel']
+  foto varchar [note: 'Path gambar berita']
+  teks text [note: 'Isi konten berita']
+  penulis varchar [note: 'Nama penulis berita']
+  tanggal datetime
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table comments {
+  id integer [primary key]
+  berita_id integer [not null, note: 'Foreign key ke berita']
+  user_id integer [not null, note: 'Foreign key ke user']
+  content text [note: 'Isi komentar']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table galeris {
+  id integer [primary key]
+  judul varchar [note: 'Judul galeri']
+  kegiatan varchar [note: 'Nama kegiatan']
+  tanggal date [nullable, note: 'Tanggal kegiatan']
+  foto varchar [note: 'Path foto galeri']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table dasar_hukums {
+  id integer [primary key]
+  title varchar [note: 'Judul regulasi/undang-undang']
+  file varchar [note: 'Path file PDF']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table sop_ppids {
+  id integer [primary key]
+  title varchar [note: 'Judul SOP']
+  file varchar [note: 'Path file SOP (PDF)']
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table password_reset_tokens {
+  email varchar [primary key]
+  token varchar
+  created_at timestamp [nullable]
+}
+
+Table sessions {
+  id varchar [primary key]
+  user_id integer [nullable]
+  ip_address varchar [nullable]
+  user_agent text [nullable]
+  payload longtext
+  last_activity integer
+}
+
+// Relationships
+Ref: comments.berita_id > beritas.id
+Ref: comments.user_id > users.id
+Ref: sessions.user_id > users.id
