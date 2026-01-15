@@ -2,34 +2,33 @@
 
 Aplikasi web pengelolaan **PPID (Pejabat Pengelola Informasi dan Dokumentasi)** dengan fitur manajemen konten, galeri, berita, dan sistem hak akses admin.
 
-## ✨ Fitur Utama
+## Fitur Utama
 
-- 🖼️ **Manajemen Galeri** - Upload, edit, dan hapus foto dengan informasi kegiatan
-- 📰 **Berita & Artikel** - CRUD berita dengan sistem komentar
-- 📄 **Dasar Hukum** - Penyimpanan dokumen regulasi dan undang-undang
-- 📋 **SOP PPID** - Dokumentasi Standard Operating Procedures
-- 🔐 **Sistem Autentikasi** - Role-based access control (Admin & User)
-- 📱 **Responsive Design** - Interface modern dengan Bootstrap
-- 💾 **File Management** - Penyimpanan aman di storage/public
+- **Manajemen Galeri** - Upload, edit, dan hapus foto dengan informasi kegiatan
+- **Berita & Artikel** - CRUD berita dengan sistem komentar
+- **Dasar Hukum** - Penyimpanan dokumen regulasi dan undang-undang
+- **SOP PPID** - Dokumentasi Standard Operating Procedures
+- **Sistem Autentikasi** - Role-based access control (Admin & User)
+- **Responsive Design** - Interface modern dengan Bootstrap
 
-## 🛠️ Stack Teknologi
+
+## Stack Teknologi
 
 - **Backend**: Laravel 11 (PHP)
-- **Frontend**: Blade Templates + Bootstrap 5
+- **Frontend**: Blade Templates
 - **Database**: MySQL
-- **Build Tool**: Vite (Asset bundling)
-- **Package Manager**: Composer, npm
+- **Build Tool**: CSS,HTML
+- **Package Manager**: Composer
 
-## 📋 Persyaratan Sistem
+## Persyaratan Sistem
 
 - Windows 10/11
 - XAMPP (Apache + MySQL 5.7+)
 - PHP 8.2+
 - Composer
-- Node.js & npm (opsional, untuk asset compilation)
 - Git
 
-## 🚀 Cara Instalasi
+## Cara Instalasi
 
 ### 1. Persiapan Environment
 ```bash
@@ -43,8 +42,6 @@ cd c:\xampp\htdocs\ppid-main
 # Install package PHP via Composer
 composer install
 
-# Install package JavaScript (opsional)
-npm install
 ```
 
 ### 3. Konfigurasi Environment
@@ -81,23 +78,13 @@ php artisan db:seed
 php artisan storage:link
 ```
 
-### 7. Build Assets (Opsional)
-```bash
-# Development
-npm run dev
 
-# Production
-npm run build
-```
-
-### 8. Jalankan Aplikasi
+### 7. Jalankan Aplikasi
 ```bash
-# Opsi 1: Menggunakan Artisan Server
+# Menggunakan Artisan Server
 php artisan serve
 # Akses: http://localhost:8000
 
-# Opsi 2: Menggunakan XAMPP
-# Akses: http://localhost/ppid-main/public
 ```
 
 ## 👤 Membuat Akun Admin
@@ -107,24 +94,14 @@ php artisan serve
 php artisan db:seed --class=AdminUserSeeder
 ```
 
-### Menggunakan Tinker
-```bash
-php artisan tinker
 
-# Copy-paste kode berikut:
-\App\Models\User::create([
-    'name' => 'Administrator',
-    'email' => 'admin@ppid.local',
-    'password' => bcrypt('password123'),
-    'role' => 'admin'
-]);
 
 exit
 ```
 
 **Default Login**: 
-- Email: `admin@ppid.local`
-- Password: `password123`
+- Email: `admin1@ppidgarut.com`
+- Password: `admin123`
 
 ## 📁 Struktur Folder Penting
 
@@ -137,9 +114,7 @@ ppid-main/
 │   ├── migrations/          # File migrasi database
 │   └── seeders/             # File seeder data
 ├── resources/
-│   ├── views/               # Blade template (UI)
-│   ├── css/                 # Stylesheet
-│   └── js/                  # JavaScript
+│   ── views/               # Blade template (UI),Style
 ├── routes/
 │   └── web.php              # Route web aplikasi
 └── storage/
@@ -157,7 +132,7 @@ ppid-main/
 | Baca Berita | ✅ | ✅ |
 | Komentar Berita | ✅ | ✅ |
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Folder storage tidak bisa diakses
 ```bash
@@ -170,17 +145,10 @@ php artisan storage:link
 - Cek konfigurasi DB_* di file `.env`
 - Jalankan: `php artisan migrate --fresh`
 
-### Permission denied di folder storage
-```bash
-# Windows (Jalankan cmd as Administrator)
-icacls "storage" /grant Everyone:F /T
 ```
 
-## 📝 Lisensi
 
-Proyek ini menggunakan Laravel Framework yang dilisensikan di bawah MIT License.
-
-## 👨‍💻 Kontribusi
+## Kontribusi
 
 Untuk berkontribusi:
 1. Buat branch baru (`git checkout -b feature/fitur-baru`)
@@ -188,15 +156,6 @@ Untuk berkontribusi:
 3. Push ke branch (`git push origin feature/fitur-baru`)
 4. Buat Pull Request
 
-## 📞 Support & Kontak
-
-Untuk bantuan atau pertanyaan, silakan hubungi tim development.
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
