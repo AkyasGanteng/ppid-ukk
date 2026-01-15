@@ -160,7 +160,8 @@ Untuk berkontribusi:
 
 ## Entity Relationship Diagram (ERD)
 
-<img width="1366" height="768" alt="Screenshot (7)" src="https://github.com/user-attachments/assets/8d648545-832d-4650-97c2-90735511f1f4" />
+<img width="529" height="635" alt="dPBDRkem48NtUGfVtGsHYjYqkoWY5DCY24Gah2E31-JYsCWPgqZGTwzTqj9I5b5Nu_d9-NmoxjV83DfA1lyuR8G2KYI3APqbAUqSGhAMhAx9WKGHwHHt_qSZUZzu24aSVurd4pyNsJXQnOUejugZdhrqH-Uky2qH1y55V9dJHHwIOq2yXE2XEoXMWGjGCI5Tt3lsgpRS7OsMl" src="https://github.com/user-attachments/assets/3fb67986-cbc0-4c25-8b25-90881e2b402a" />
+
 
 ## Use Cases dan Alur Sistem
 ### Diagram Sistem
