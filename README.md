@@ -1,4 +1,4 @@
-# 📋 Aplikasi Website PPID
+# Aplikasi Website PPID
 
 Aplikasi web pengelolaan **PPID (Pejabat Pengelola Informasi dan Dokumentasi)** dengan fitur manajemen konten, galeri, berita, dan sistem hak akses admin.
 
@@ -145,7 +145,7 @@ php artisan storage:link
 - Cek konfigurasi DB_* di file `.env`
 - Jalankan: `php artisan migrate --fresh`
 
-```
+
 
 
 ## Kontribusi
@@ -157,8 +157,7 @@ Untuk berkontribusi:
 4. Buat Pull Request
 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## Entity Relationship Diagram (ERD)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<img width="1366" height="768" alt="Screenshot (7)" src="https://github.com/user-attachments/assets/8d648545-832d-4650-97c2-90735511f1f4" />
